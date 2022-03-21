@@ -1,0 +1,6 @@
+{
+  "network": "mainnet",
+  "address": "0xDEf1CA1fb7FBcDC777520aa7f396b4E015F497aB",
+  "startBlock": 14186722,
+  "transferHandler": "handleMainnetTransfer"
+}

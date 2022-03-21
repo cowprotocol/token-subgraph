@@ -1,0 +1,6 @@
+{
+  "network": "xdai",
+  "address": "0x177127622c4A00F3d409B75571e12cB3c8973d3c",
+  "startBlock": 20588746,
+  "transferHandler": "handleGchainTransfer"
+}
