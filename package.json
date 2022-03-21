@@ -1,16 +1,17 @@
 {
-  "name": "cow-token-mainnet",
+  "name": "cow-token-subgraph",
   "license": "UNLICENSED",
   "scripts": {
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.yaml.mustache > subgraph.yaml",
+    "prepare:gchain": "mustache config/gchain.json subgraph.yaml.mustache > subgraph.yaml",
     "codegen": "graph codegen",
-    "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ cow-token-mainnet",
-    "create-local": "graph create --node http://localhost:8020/ cow-token-mainnet",
-    "remove-local": "graph remove --node http://localhost:8020/ cow-token-mainnet",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 cow-token-mainnet"
+    "build": "graph codegen && graph build"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.28.0",
     "@graphprotocol/graph-ts": "0.26.0"
+  },
+  "devDependencies": {
+    "mustache": "^4.2.0"
   }
 }
