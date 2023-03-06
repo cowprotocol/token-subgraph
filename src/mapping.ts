@@ -16,6 +16,7 @@ export function loadOrCreateHolder(address: Address): Holder {
   let holder = Holder.load(address.toHex());
   if (!holder) {
     holder = new Holder(address.toHex());
+    holder.balance = BigInt.zero();
   }
   if (address != Address.zero()) {
     // Skip creation of burn address holder.
@@ -36,6 +37,8 @@ export function loadOrCreateSupply(): Supply {
   if (!supply) {
     // This will only ever happen once!
     supply = new Supply(COW_TOKEN);
+    supply.total = BigInt.zero();
+    supply.circulating = BigInt.zero();
   }
   supply.save();
   return supply;

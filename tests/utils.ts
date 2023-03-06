@@ -34,7 +34,7 @@ export function mockTransferEvent(
     new ethereum.EventParam("value", ethereum.Value.fromSignedBigInt(value))
   );
   mockEvent.parameters.push(
-    new ethereum.EventParam("data", ethereum.Value.fromString(data))
+    new ethereum.EventParam("data", ethereum.Value.fromBytes(Bytes.fromHexString(data)))
   );
 
   return new Transfer(
@@ -44,6 +44,7 @@ export function mockTransferEvent(
     mockEvent.logType,
     mockEvent.block,
     mockEvent.transaction,
-    mockEvent.parameters
+    mockEvent.parameters,
+    mockEvent.receipt,
   );
 }
