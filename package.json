@@ -1,5 +1,7 @@
 {
-  "name": "cow-token-mainnet",
+  "name": "@cowprotocol/token-subgraph",
+  "version": "0.0.1",
+  "private": true,
   "license": "MIT OR Apache-2.0",
   "scripts": {
     "codegen": "graph codegen",

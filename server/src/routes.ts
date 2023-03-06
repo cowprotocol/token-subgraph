@@ -3,7 +3,7 @@ import { GraphQLClient, gql } from "graphql-request";
 
 import { formatTokenUnit } from "./util";
 
-const API_URL =
+const DEFAULT_SUBGRAPH_URL =
   "https://api.thegraph.com/subgraphs/name/bh2smith/cow-token-mainnet";
 const COW_TOKEN = "0xDEf1CA1fb7FBcDC777520aa7f396b4E015F497aB";
 
@@ -32,8 +32,10 @@ export type Supply = {
 export async function handleSupplyQuery(
   blockNum?: string
 ): Promise<Supply | null> {
+  const { SUBGRAPH_URL } = process.env;
+
   const query = supplyQuery(blockNum);
-  const client = new GraphQLClient(API_URL);
+  const client = new GraphQLClient(SUBGRAPH_URL ?? DEFAULT_SUBGRAPH_URL);
   try {
     const { supply } = await client.request(query);
     return supply;
