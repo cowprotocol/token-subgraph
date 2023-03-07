@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { GraphQLClient, gql } from "graphql-request";
 
+import * as metrics from "./metrics";
 import { formatTokenUnit } from "./util";
 
 const DEFAULT_SUBGRAPH_URL =
@@ -38,9 +39,13 @@ export async function handleSupplyQuery(
   const client = new GraphQLClient(SUBGRAPH_URL ?? DEFAULT_SUBGRAPH_URL);
   try {
     const { supply } = await client.request(query);
+
+    metrics.subgraphQueries.labels({ result: "ok" }).inc();
     return supply;
   } catch (err) {
     console.error(err);
+
+    metrics.subgraphQueries.labels({ result: "err" }).inc();
     return null;
   }
 }
