@@ -1,6 +1,7 @@
 {
-  "name": "simple-api",
+  "name": "@cowprotocol/token-subgraph-api",
   "version": "1.0.0",
+  "private": true,
   "description": "Tiny API",
   "author": "Ben Smith <ben@cow.fi>",
   "license": "MIT OR Apache-2.0",

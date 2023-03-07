@@ -1,4 +1,5 @@
-node_modules
 build
-generated
 dist
+generated
+node_modules
+tests/.bin
